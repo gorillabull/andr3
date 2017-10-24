@@ -74,14 +74,31 @@ namespace App1
 
 
             // Get the latitude and longitude entered by the user and create a query.
-            string url = "https://api.coinmarketcap.com/v1/ticker/bitcoin/";
-
+            string url_btc = "https://api.coinmarketcap.com/v1/ticker/bitcoin/";
+            string url_eth = "https://api.coinmarketcap.com/v1/ticker/ethereum/";
+            string url_ltc = "https://api.coinmarketcap.com/v1/ticker/litecoin/";
+            string url_xem = "https://api.coinmarketcap.com/v1/ticker/nem/";
+            JsonValue json = FetchWeatherAsync(url_btc);
 
             
-            JsonValue json = FetchWeatherAsync(url);
+            button.Click += delegate {
 
-            tx1.Text = "btc:" + json["price_usd"].ToString();
-            button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+                JsonValue json1 = FetchWeatherAsync(url_btc);
+                tx1.Text = "btc:" + json[0]["price_usd"].ToString();
+
+                json1 = FetchWeatherAsync(url_eth);
+                tx2.Text = "eth: " + json1[0]["price_usd"].ToString();
+
+
+                json1 = FetchWeatherAsync(url_eth);
+                tx3.Text = "ltc : " + json1[0]["price_usd"].ToString();
+
+
+                json1 = FetchWeatherAsync(url_eth);
+                tx4.Text = "nem : " + json1[0]["price_usd"].ToString();
+
+
+            };
         }
 
 
