@@ -26,6 +26,8 @@ using Android.Content;
 using System.Collections.Generic;
 
 
+
+
 namespace App1
 {
     public class activity2 : Activity
@@ -49,6 +51,15 @@ namespace App1
         TextView tx3;
         TextView tx4;
         TextView tx5;
+        TextView tx6;
+        TextView tx7;
+        TextView tx8;
+        TextView tx9;
+        TextView tx10;
+        TextView tx11;
+        TextView tx12;
+
+
         Button b2;
         ImageView view1;
 
@@ -70,6 +81,10 @@ namespace App1
             tx3 = FindViewById<TextView>(Resource.Id.editText3);
             tx4 = FindViewById<TextView>(Resource.Id.editText4);
             tx5 = FindViewById<TextView>(Resource.Id.editText5);
+            tx6 = FindViewById<TextView>(Resource.Id.editText6);
+            tx7 = FindViewById<TextView>(Resource.Id.editText7);
+            tx8 = FindViewById<TextView>(Resource.Id.editText8);
+
             tx5.Text = "helo";
 
 
@@ -78,6 +93,10 @@ namespace App1
             string url_eth = "https://api.coinmarketcap.com/v1/ticker/ethereum/";
             string url_ltc = "https://api.coinmarketcap.com/v1/ticker/litecoin/";
             string url_xem = "https://api.coinmarketcap.com/v1/ticker/nem/";
+            string url_bch   = "https://api.coinmarketcap.com/v1/ticker/bitcoin-cash/";
+            string url_monero = "https://api.coinmarketcap.com/v1/ticker/monero/";
+            string url_iota = "https://api.coinmarketcap.com/v1/ticker/iota/";
+
             JsonValue json = FetchWeatherAsync(url_btc);
 
             
@@ -96,6 +115,16 @@ namespace App1
 
                 json1 = FetchWeatherAsync(url_eth);
                 tx4.Text = "nem : " + json1[0]["price_usd"].ToString();
+
+                json1 = FetchWeatherAsync(url_bch);
+                tx5.Text = "bch : " + json1[0]["price_usd"].ToString();
+
+                json1 = FetchWeatherAsync(url_monero);
+                tx6.Text = "monero : " + json1[0]["price_usd"].ToString();
+
+                json1 = FetchWeatherAsync(url_iota);
+                tx7.Text = "iota : " + json1[0]["price_usd"].ToString();
+
 
 
             };
