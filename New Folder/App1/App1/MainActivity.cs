@@ -27,6 +27,11 @@ using System.Collections.Generic;
 
 
 
+ 
+using System;
+using System.Linq;
+using System.Diagnostics;
+using Xamarin;
 
 namespace App1
 {
@@ -99,8 +104,19 @@ namespace App1
 
             JsonValue json = FetchWeatherAsync(url_btc);
 
-            
+            System.Threading.Tasks.Task.Run(() =>
+            {
+                Wait(5000);
+                //Add your code here.
+            }).ConfigureAwait(false);
+
+
             button.Click += delegate {
+                Android.App.Service s1;
+                
+
+                
+                
 
                 JsonValue json1 = FetchWeatherAsync(url_btc);
                 tx1.Text = "btc:" + json[0]["price_usd"].ToString();
@@ -109,11 +125,11 @@ namespace App1
                 tx2.Text = "eth: " + json1[0]["price_usd"].ToString();
 
 
-                json1 = FetchWeatherAsync(url_eth);
+                json1 = FetchWeatherAsync(url_ltc);
                 tx3.Text = "ltc : " + json1[0]["price_usd"].ToString();
 
 
-                json1 = FetchWeatherAsync(url_eth);
+                json1 = FetchWeatherAsync(url_xem);
                 tx4.Text = "nem : " + json1[0]["price_usd"].ToString();
 
                 json1 = FetchWeatherAsync(url_bch);
